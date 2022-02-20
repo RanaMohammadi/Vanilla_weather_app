@@ -23,6 +23,9 @@ li {
   font-weight: 100;
   line-height: 20px;
 }
+li::first-letter {
+  text-transform: capitalize;
+}
 ul {
   margin: 0;
   padding: 0;
