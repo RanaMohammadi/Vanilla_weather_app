@@ -17,7 +17,25 @@
   <body>
     <div class="container">
       <div class="wrapper">
+        <form id="search-form">
         <div class="weather-app">
+          <div class="input-group mb-3">
+            <input
+              type="search"
+              class="form-control"
+              placeholder="Search any city"
+              aria-label="Recipient's username"
+              aria-describedby="button-addon2"
+              id="search-input"
+            />
+            <button
+              class="btn btn-outline-secondary"
+              type="submit"
+              id="button-addon2"
+            >Search
+            </button>
+          </div>
+          </form>
           <h1 id="city"></h1>
           <ul>
             <li>Last updated at <span id="date"></span></li>
