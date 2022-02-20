@@ -28,16 +28,24 @@ function displayTemperature(response) {
   let humidityElement = document.querySelector("#humidity");
   let windSpeedElement = document.querySelector("#windSpeed");
   let visibilityElement = document.querySelector("#visibility");
+  let feelsLikeEelement = document.querySelector("#feelsLike");
   let dateElement = document.querySelector("#date");
+  let iconElement = document.querySelector("#icon");
+
   temperatureElement.innerHTML = Math.round(response.data.main.temp);
   cityElement.innerHTML = response.data.name;
   descriptionElement.innerHTML = response.data.weather[0].description;
   humidityElement.innerHTML = response.data.main.humidity;
   windSpeedElement.innerHTML = Math.round(response.data.wind.speed);
   visibilityElement.innerHTML = Math.floor(response.data.visibility / 1000);
+  feelsLikeEelement.innerHTML = Math.round(response.data.main.feels_like);
   dateElement.innerHTML = formatDate(response.data.dt * 1000);
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
 }
-let city = "Malmo";
+let city = "Sydney";
 let apiKey = "cf8403573358fa943fb21dc8f32d6370";
 let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric
 &appid=${apiKey}`;
