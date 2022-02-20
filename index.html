@@ -16,30 +16,43 @@
   <body>
     <div class="container">
       <div class="wrapper">
-        <h1>New york</h1>
-        <ul>
-          <li>Last updated Saturday 18:00</li>
-          <li>Parly cloudy</li>
-        </ul>
-        <div class="row">
-          <div class="col-6"><img src="" /> 17°C|°F</div>
-          <div class="col-6">
-            <ul>
-              <li>Humidity</li>
-              <li>Wind speed</li>
-              <li>Visibility</li>
-            </ul>
+        <div class="weather-app">
+          <h1>New york</h1>
+          <ul>
+            <li>Last updated Saturday 18:00</li>
+            <li>Parly cloudy</li>
+          </ul>
+          <div class="row">
+            <div class="col-6">
+              <div class="clearfix weather-temperature">
+                <img
+                  src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png"
+                  class="float-start"
+                />
+                <span class="float-start">
+                  <strong class="temperature">17</strong>
+                  <span class="units">°C |<a href=""> °F</a></span>
+                </span>
+              </div>
+            </div>
+            <div class="col-6">
+              <ul>
+                <li>Humidity</li>
+                <li>Wind speed</li>
+                <li>Visibility</li>
+              </ul>
+            </div>
           </div>
         </div>
-      </div>
-      <small
-        ><a
-          href="https://github.com/RanaMohammadi/Vanilla_weather_app"
-          target="-blank"
-          >Coded by</a
+        <small
+          ><a
+            href="https://github.com/RanaMohammadi/Vanilla_weather_app"
+            target="-blank"
+            >Coded by</a
+          >
+          Rana Mohammadi</small
         >
-        Rana Mohammadi</small
-      >
+      </div>
     </div>
     <script src="src/script.js"></script>
   </body>
