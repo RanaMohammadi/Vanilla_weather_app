@@ -66,22 +66,41 @@ function handleSubmit(event) {
   let searchInputElement = document.querySelector("#search-input");
   search(searchInputElement.value);
 }
+
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  return days[day];
+}
+
 function displayDailyForecast(response) {
   console.log(response.data.daily);
+  let forecast = response.data.daily;
   let dailyForecastElement = document.querySelector("#daily-forecast");
   let dailyForecast = `<div class="row">`;
   let days = ["Tue", "Wed", "Thu", "Fri"];
-  days.forEach(function (day) {
-    dailyForecast =
-      dailyForecast +
-      `<div class="col-2">
-                        <div class="forecast-date">${day}</div>
-                        <img src="http://openweathermap.org/img/wn/10n@2x.png" width="42"/>
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 6) {
+      dailyForecast =
+        dailyForecast +
+        `<div class="col-2">
+                        <div class="forecast-date">${formatDay(
+                          forecastDay.dt
+                        )}</div>
+                        <img src="http://openweathermap.org/img/wn/${
+                          forecastDay.weather[0].icon
+                        }@2x.png" width="42"/>
                         <div class="forecast-temperature">
-                            <span class="forecast-temperature-max">18°</span>
-                            <span class="forecast-temperature-min">12°</span>
+                            <span class="forecast-temperature-max">${Math.round(
+                              forecastDay.temp.max
+                            )}°</span>
+                            <span class="forecast-temperature-min">${Math.round(
+                              forecastDay.temp.min
+                            )}°</span>
                         </div>
                     </div>`;
+    }
   });
   dailyForecast = dailyForecast + "</div>";
   dailyForecastElement.innerHTML = dailyForecast;
@@ -105,7 +124,7 @@ function updateTemperatureToCelcius(event) {
 
 let celcius = null;
 
-search("Sydney");
+search("Stockholm");
 
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
