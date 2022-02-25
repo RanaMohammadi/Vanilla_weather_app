@@ -65,6 +65,8 @@ function handleSubmit(event) {
   event.preventDefault();
   let searchInputElement = document.querySelector("#search-input");
   search(searchInputElement.value);
+  let searchForm = document.querySelector("#form-container");
+  searchForm.innerHTML = "";
 }
 
 function formatDay(timestamp) {
@@ -121,16 +123,41 @@ function updateTemperatureToCelcius(event) {
   let temperatureElement = document.querySelector("#temperature");
   temperatureElement.innerHTML = Math.round(celcius);
 }
+function handleSearch(event) {
+  event.preventDefault();
+  let searchForm = document.querySelector("#form-container");
+  searchForm.innerHTML = `<form id="search-form">
+              <div class="input-group mb-3">
+                <input
+                  type="search"
+                  class="form-control"
+                  placeholder="Search any city"
+                  aria-label="Recipient's username"
+                  aria-describedby="button-addon2"
+                  id="search-input"
+                />
+                <button
+                  class="btn btn-outline-secondary"
+                  type="submit"
+                  id="button-addon2"
+                >
+                  Search
+                </button>
+              </div>
+            </form>`;
+  let form = document.querySelector("#search-form");
+  form.addEventListener("submit", handleSubmit);
+}
 
 let celcius = null;
 
 search("Stockholm");
-
-let form = document.querySelector("#search-form");
-form.addEventListener("submit", handleSubmit);
 
 let fahrenheitLink = document.querySelector("#fahrenheit");
 fahrenheitLink.addEventListener("click", updateTemperatureToFahrenheit);
 
 let celciusLink = document.querySelector("#celcius");
 celciusLink.addEventListener("click", updateTemperatureToCelcius);
+
+let searchIcon = document.querySelector("#search-icon");
+searchIcon.addEventListener("click", handleSearch);

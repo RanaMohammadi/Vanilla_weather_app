@@ -16,6 +16,11 @@ h1 {
   line-height: 28px;
   color: grey;
 }
+.search-icon {
+  margin-left: 5px;
+  position: relative;
+  top: 2px;
+}
 li {
   list-style: none;
   color: #707579;
@@ -50,6 +55,7 @@ ul {
   position: relative;
   top: -32px;
 }
+
 .weather-temperature .active {
   color: black;
   cursor: default;
