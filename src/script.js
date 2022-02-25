@@ -31,6 +31,7 @@ function displayTemperature(response) {
   let dateElement = document.querySelector("#date");
   let iconElement = document.querySelector("#icon");
 
+  displayDailyForecast();
   celcius = response.data.main.temp;
 
   temperatureElement.innerHTML = Math.round(celcius);
@@ -57,7 +58,25 @@ function handleSubmit(event) {
   let searchInputElement = document.querySelector("#search-input");
   search(searchInputElement.value);
 }
-
+function displayDailyForecast() {
+  let dailyForecastElement = document.querySelector("#daily-forecast");
+  let dailyForecast = `<div class="row">`;
+  let days = ["Tue", "Wed", "Thu", "Fri"];
+  days.forEach(function (day) {
+    dailyForecast =
+      dailyForecast +
+      `<div class="col-2">
+                        <div class="forecast-date">${day}</div>
+                        <img src="http://openweathermap.org/img/wn/10n@2x.png" width="42"/>
+                        <div class="forecast-temperature">
+                            <span class="forecast-temperature-max">18°</span>
+                            <span class="forecast-temperature-min">12°</span>
+                        </div>
+                    </div>`;
+  });
+  dailyForecast = dailyForecast + "</div>";
+  dailyForecastElement.innerHTML = dailyForecast;
+}
 function updateTemperatureToFahrenheit(event) {
   event.preventDefault();
   celciusLink.classList.remove("active");
