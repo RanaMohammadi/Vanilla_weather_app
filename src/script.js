@@ -39,9 +39,7 @@ function displayTemperature(response) {
   let dateElement = document.querySelector("#date");
   let iconElement = document.querySelector("#icon");
 
-  celcius = response.data.main.temp;
-
-  temperatureElement.innerHTML = Math.round(celcius);
+  temperatureElement.innerHTML = Math.round(response.data.main.temp);
   cityElement.innerHTML = response.data.name;
   descriptionElement.innerHTML = response.data.weather[0].description;
   humidityElement.innerHTML = response.data.main.humidity;
@@ -107,22 +105,7 @@ function displayDailyForecast(response) {
   dailyForecast = dailyForecast + "</div>";
   dailyForecastElement.innerHTML = dailyForecast;
 }
-function updateTemperatureToFahrenheit(event) {
-  event.preventDefault();
-  celciusLink.classList.remove("active");
-  fahrenheitLink.classList.add("active");
-  let fahrenheit = (celcius * 9) / 5 + 32;
-  let temperatureElement = document.querySelector("#temperature");
-  temperatureElement.innerHTML = Math.round(fahrenheit);
-}
 
-function updateTemperatureToCelcius(event) {
-  event.preventDefault();
-  fahrenheitLink.classList.remove("active");
-  celciusLink.classList.add("active");
-  let temperatureElement = document.querySelector("#temperature");
-  temperatureElement.innerHTML = Math.round(celcius);
-}
 function handleSearch(event) {
   event.preventDefault();
   let searchForm = document.querySelector("#form-container");
@@ -149,15 +132,7 @@ function handleSearch(event) {
   form.addEventListener("submit", handleSubmit);
 }
 
-let celcius = null;
-
 search("Stockholm");
-
-let fahrenheitLink = document.querySelector("#fahrenheit");
-fahrenheitLink.addEventListener("click", updateTemperatureToFahrenheit);
-
-let celciusLink = document.querySelector("#celcius");
-celciusLink.addEventListener("click", updateTemperatureToCelcius);
 
 let searchIcon = document.querySelector("#search-icon");
 searchIcon.addEventListener("click", handleSearch);
